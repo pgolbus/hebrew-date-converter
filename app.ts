@@ -105,4 +105,4 @@ function request(url: string): (HebCalResponseType | OpenweatherResponseType | S
         country: "US"
     };
     return teaneck;
-}
+};
