@@ -1,3 +1,50 @@
+/***************************************
+// Response types for external API calls
+***************************************/
+
+type HebCalResponseType = {
+    gy: number,
+    gm: number,
+    gd: number,
+    afterSunset: boolean,
+    hy: number,
+    hm: string,
+    hd: number,
+    hebrew: string,
+    heDateParts: string[],
+    events: string[]
+  }
+
+type OpenweatherResponseType = {
+    zip: string,
+    name: string,
+    lat: number,
+    lon: number,
+    country: string
+};
+
+type SunriseSunsetResultsType = {
+    sunrise: string,
+    sunset: string,
+    solar_noon: string,
+    day_length: string,
+    civil_twilight_begin: string,
+    civil_twilight_end: string,
+    nautical_twilight_begin: string,
+    nautical_twilight_end: string,
+    astronomical_twilight_begin: string,
+    astronomical_twilight_end: string
+};
+
+type SunriseSunsetReturnType = {
+    results: SunriseSunsetResultsType,
+    status: string
+};
+
+/***************************************
+// Function definitions
+***************************************/
+
 function gregorianToHebrew(
     year: number, 
     month: number, 
@@ -48,19 +95,14 @@ function isBeforeSunset(
     return true;
 };
 
-function request(url: string, callback: (any) => any): void {
-    // Return the assumed JSON blob from an http request
-    // I haven't figured out the signature of the callback yet
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", url);
-    
-    xhr.onreadystatechange = function (): void {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-           document.getElementById("test").innerHTML = xhr.responseText;
-        } else {
-            throw `${url} failed to load.`
-        }
+function request(url: string): (HebCalResponseType | OpenweatherResponseType | SunriseSunsetReturnType) {
+    // Make a request of one of our three external apis
+    let teaneck: OpenweatherResponseType = {
+        zip: "07666",
+        name: "Teaneck Township",
+        lat: 40.8915,
+        lon: -74.0119,
+        country: "US"
     };
-
-    xhr.send();
-};
+    return teaneck;
+}
