@@ -1,0 +1,74 @@
+{
+   "HebrewMonths": {
+      "Nisan": {
+         "Hebrew": "ניסן",
+         "Aliases": "",
+         "Number": "1"
+      },
+      "Iyyar": {
+         "Hebrew": "אייר",
+         "Aliases": "Iyar",
+         "Number": "2"
+      },
+      "Sivan": {
+         "Hebrew": "סיון",
+         "Aliases": "",
+         "Number": "3"
+      },
+      "Tamuz": {
+         "Hebrew": "תמוז",
+         "Aliases": "Tammuz",
+         "Number": "4"
+      },
+      "Av": {
+         "Hebrew": "אב",
+         "Aliases": "",
+         "Number": "5"
+      },
+      "Elul": {
+         "Hebrew": "אלול",
+         "Aliases": "",
+         "Number": "6"
+      },
+      "Tishrei": {
+         "Hebrew": "תשרי",
+         "Aliases": "",
+         "Number": "7"
+      },
+      "Cheshvan": {
+         "Hebrew": "חשון",
+         "Aliases": "",
+         "Number": "8"
+      },
+      "Kislev": {
+         "Hebrew": "כסלו",
+         "Aliases": "",
+         "Number": "9"
+      },
+      "Tevet": {
+         "Hebrew": "טבת",
+         "Aliases": "Teves",
+         "Number": "10"
+      },
+      "Shvat": {
+         "Hebrew": "שבט",
+         "Aliases": "Sh'vat",
+         "Number": "11"
+      },
+      "Adar": {
+         "Hebrew": "אדר",
+         "Aliases": "",
+         "Number": "12"
+      },
+      "Adar1": {
+         "Hebrew": "אדר א׳",
+         "Aliases": ["Adar 1", "Adar I"],
+         "Number": "12a"
+      },
+      "Adar2": {
+         "Hebrew": "אדר ב׳",
+         "Aliases": ["Adar 2", "Adar II"],
+         "Number": "12b"
+      }
+   }
+}
