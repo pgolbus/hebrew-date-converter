@@ -42,39 +42,40 @@ type SunriseSunsetReturnType = {
 };
 
 /***************************************
-// Function definitions
+// function definitions
+// Note that we need to export all of them for unit testing purposes
 ***************************************/
 
-function gregorianToHebrew(
+export function gregorianToHebrew(
     year: number, 
     month: number, 
     day: number, 
     hour: number, 
     minute: number,
     meridian: string, 
-    zip: number): string {
+    zip: string): string {
     // Take a gregorian date and convert to hebrew date being cognizant of sunset
     return "foo";
 };
 
-function hebrewToGregorian(
+export function hebrewToGregorian(
     year: number, 
     month: number, 
     day: number, 
     hour: number, 
     minute: number,
     meridian: string, 
-    zip: number): string {
+    zip: string): string {
     // Take a hebrew date and convert to gregorian date being cognizant of sunset
     return "foo";
 };
 
-function zipToLatLong(zip: number): [number, number] {
+export function zipToLatLong(zip: string): [number, number] {
     // Get lat / long for a zip code
     return [0, 0];
 };
 
-function getSunsetTime(
+export function getSunsetTime(
     year: number, 
     month: number, 
     day: number, 
@@ -83,7 +84,7 @@ function getSunsetTime(
     return "foo";
 };
 
-function isBeforeSunset(    
+export function isBeforeSunset(    
     year: number, 
     month: number, 
     day: number, 
@@ -95,7 +96,7 @@ function isBeforeSunset(
     return true;
 };
 
-function request(url: string): (HebCalResponseType | OpenweatherResponseType | SunriseSunsetReturnType) {
+export function request(url: string): (HebCalResponseType | OpenweatherResponseType | SunriseSunsetReturnType) {
     // Make a request of one of our three external apis
     let teaneck: OpenweatherResponseType = {
         zip: "07666",
