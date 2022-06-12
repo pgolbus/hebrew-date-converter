@@ -2,7 +2,7 @@
 // Response types for external API calls
 ***************************************/
 
-type HebCalResponseType = {
+export type HebCalResponseType = {
     gy: number,
     gm: number,
     gd: number,
@@ -15,7 +15,7 @@ type HebCalResponseType = {
     events: string[]
   }
 
-type OpenweatherResponseType = {
+export type OpenweatherResponseType = {
     zip: string,
     name: string,
     lat: number,
@@ -36,7 +36,7 @@ type SunriseSunsetResultsType = {
     astronomical_twilight_end: string
 };
 
-type SunriseSunsetReturnType = {
+export type SunriseSunsetResponseType = {
     results: SunriseSunsetResultsType,
     status: string
 };
@@ -96,14 +96,15 @@ export function isBeforeSunset(
     return true;
 };
 
-export function request(url: string): (HebCalResponseType | OpenweatherResponseType | SunriseSunsetReturnType) {
+export async function request(url: string): Promise<HebCalResponseType | OpenweatherResponseType | SunriseSunsetResponseType> {
     // Make a request of one of our three external apis
-    let teaneck: OpenweatherResponseType = {
-        zip: "07666",
-        name: "Teaneck Township",
-        lat: 40.8915,
-        lon: -74.0119,
-        country: "US"
-    };
-    return teaneck;
+    // let teaneck: OpenweatherResponseType = {
+    //     zip: "07666",
+    //     name: "Teaneck Township",
+    //     lat: 40.8915,
+    //     lon: -74.0119,
+    //     country: "US"
+    // };
+    // return teaneck;
+    return await (await fetch(url)).json()
 };
