@@ -11,4 +11,4 @@ let date: string = "2012-11-09";
 let url: string = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&date=${date}`;
 
 const promise: Promise<HebCalResponseType | OpenweatherResponseType | SunriseSunsetResponseType> = request(url); 
-promise.then(response => console.log(response), error => console.log(error.status));
+promise.then(response => console.log((response as SunriseSunsetResponseType).results), error => console.log(error.status));
