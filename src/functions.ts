@@ -6,7 +6,7 @@ import {
     SunriseSunsetResultsType
 } from "./types"
 
-//const zipcode_to_timezone = require( 'zipcode-to-timezone' );
+const zipcode_to_timezone = require( 'zipcode-to-timezone' );
 
 /***************************************
 // helper function definitions
