@@ -1,3 +1,5 @@
+//const zipcode_to_timezone = require( 'zipcode-to-timezone' );
+
 /***************************************
 // Response types for external API calls
 ***************************************/
@@ -23,7 +25,12 @@ export type OpenweatherResponseType = {
     country: string
 };
 
-type SunriseSunsetResultsType = {
+export type SunriseSunsetResponseType = {
+    results: SunriseSunsetResultsType,
+    status: string
+};
+
+export type SunriseSunsetResultsType = {
     sunrise: string,
     sunset: string,
     solar_noon: string,
@@ -36,14 +43,8 @@ type SunriseSunsetResultsType = {
     astronomical_twilight_end: string
 };
 
-export type SunriseSunsetResponseType = {
-    results: SunriseSunsetResultsType,
-    status: string
-};
-
 /***************************************
 // function definitions
-// Note that we need to export all of them for unit testing purposes
 ***************************************/
 
 export function gregorianToHebrew(
@@ -81,6 +82,9 @@ export function getSunsetTime(
     day: number, 
     zip: number): string {
     // Get sunset time for a given date and zip code
+    function convertTZ(date: Date, tzString: string) {
+        return date.toLocaleString("en-US", {timeZone: tzString});   
+    }
     return "foo";
 };
 
@@ -98,13 +102,6 @@ export function isBeforeSunset(
 
 export async function request(url: string): Promise<HebCalResponseType | OpenweatherResponseType | SunriseSunsetResponseType> {
     // Make a request of one of our three external apis
-    // let teaneck: OpenweatherResponseType = {
-    //     zip: "07666",
-    //     name: "Teaneck Township",
-    //     lat: 40.8915,
-    //     lon: -74.0119,
-    //     country: "US"
-    // };
-    // return teaneck;
-    return await (await fetch(url)).json()
+    const jsonResult: Promise<HebCalResponseType | OpenweatherResponseType | SunriseSunsetResponseType> = (await fetch(url)).json();
+    return jsonResult;
 };
