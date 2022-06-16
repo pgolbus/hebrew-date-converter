@@ -1,34 +1,9 @@
 import {
     zipToLatLong,
     getSunsetTime,
-    isBeforeSunset,
-    request
-} 
+    isBeforeSunset
+}
 from "../src/functions";
-
-import { apiKey } from "../openweather-api-key";
-
-import { OpenweatherResponseType } from "../src/types";
-
-const mockResponse: OpenweatherResponseType = {
-    "zip": "07666",
-    "name": "Teaneck Township",
-    "lat": 40.8915,
-    "lon": -74.0119,
-    "country": "US"
-};
-
-global.fetch = jest.fn(() => 
-    new Promise(() => 
-    {
-        json: () => new Promise(() => mockResponse)
-    })
- ) as jest.Mock;
-
-/***********************************************************
-// Tests
-************************************************************/
-
 
 test("Get lat/long for Teaneck", () => {
     expect(zipToLatLong("07666")).toBe([40.8915, -74.0119]);
@@ -56,22 +31,4 @@ test("Get sunset time for Aaron's birthday in Teaneck", () => {
 test("Date should be before sunset", () => {
     const testDate: Date = new Date("2012-11-09 12:00:00PM EST")
     expect(isBeforeSunset(2012, 11, 9, 12, 0, 0, "PM", "07666")).toBe(true);
-});
-
-test("Let's make sure we can make a request", async () => {
-    const zip: string = "07666";
-    const country: string = "US";
-    const requestApiKey: string = apiKey.apiKeyString;
-    const url: string = `http://api.openweathermap.org/geo/1.0/zip?zip=${zip},${country}&appid=${requestApiKey}`
-
-    // Why on earth does it say that requestResponse is an OpenweatherResponseType? Whatever, moving on
-    const requestResponse: Promise<OpenweatherResponseType> = await (request(url) as Promise<OpenweatherResponseType>);
-    //const requestResponse: any = await (request(url) as Promise<OpenweatherResponseType>);
-    expect(requestResponse).toBe({
-            "zip": "07666",
-            "name": "Teaneck Township",
-            "lat": 40.8915,
-            "lon": -74.0119,
-            "country": "US"
-    })
 });
